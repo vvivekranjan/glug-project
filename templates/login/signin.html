@@ -26,13 +26,6 @@
         background-position: center;
     }
 
-    .video-play {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-    }
-
     .wrapper {
         width: 420px;
         background: transparent;
@@ -141,9 +134,6 @@
     </style>
 </head>
 <body>
-    <!-- <video autoplay loop muted plays-inline class="video-play">
-        <source src="https://i.gifer.com/VJi.mp4" type="video/mp4">
-    </video> -->
     <div class="wrapper">
         <form action="/signin" method="post">
         {% csrf_token %}
