@@ -16,12 +16,10 @@
             <h1> GLUG </h1>
             <h3> Log in to your account</h3>
             <div class="input-box">
-                <!-- <label for="username" >Username</label> -->
                 <input type="text" id="username" name="username" placeholder="Username" required>
                 <i class="bx bxs-user"></i>
             </div>
             <div class="input-box">
-                <!-- <label for="password" >Password</label> -->
                 <input type="password" id="pass1" name="pass1" placeholder="Password" required>
                 <i class="bx bxs-lock-alt"></i>
             </div>
@@ -37,5 +35,30 @@
             </div>
         </form>
     </div>
+
+    <script>
+        // JavaScript for responsiveness
+        window.addEventListener('resize', function() {
+            // Example: Adjusting form layout based on window width
+            adjustFormLayout();
+        });
+
+        function adjustFormLayout() {
+            var form = document.getElementById('signinForm');
+            var wrapper = document.querySelector('.wrapper');
+            if (window.innerWidth < 768) {
+                wrapper.style.width = '60%';
+                wrapper.style.margin = 'auto';
+            } else {
+                // Reset styles if window width is greater than 768px
+                wrapper.style.width = 'initial';
+                wrapper.style.margin = 'initial';
+            }
+        }
+        
+        // Call adjustFormLayout on initial page load
+        adjustFormLayout();
+    </script>
+
 </body>
 </html>

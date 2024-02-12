@@ -18,19 +18,20 @@ def signup(request):
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
 
-        if User.objects.filter(username=username):
-            messages.error(request, "Username already exist! Please try some other username")
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists! Please try a different username")
             return redirect('home')
         
-        if User.objects.filter(email=email):
+        if User.objects.filter(email=email).exists():
             messages.error(request, "Email already registered!")
             return redirect('home')
         
         if pass1 != pass2:
-            messages.error(request, "Password didn't match!")
+            messages.error(request, "Passwords didn't match!")
+            return redirect('home')
 
-        if not username.alnum():
-            messages.error(request, "Username must be Alpha-Numeric")
+        if not username.isalnum():
+            messages.error(request, "Username must be alphanumeric")
             return redirect('home')
 
         myuser = User.objects.create_user(username, email, pass1)
@@ -39,12 +40,12 @@ def signup(request):
 
         myuser.save()
 
-        messages.success(request, "Your Account has been successfully created!")
+        messages.success(request, "Your account has been successfully created!")
 
         return redirect('signin')
 
-
     return render(request, "login/signup.html")
+
 
 def signin(request):
 
